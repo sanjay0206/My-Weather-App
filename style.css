@@ -1,0 +1,85 @@
+body {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh;
+       margin: 0;
+       background-color:gray;
+       font-family: 'Raleway', sans-serif;
+       font-size: 120%;
+       opacity: 0.8;
+       background-image: url('https://source.unsplash.com/1600x900/?landscape');
+       color: white;
+}
+
+.content {
+       background: black;
+       padding: 2em;
+       border-radius: 25px;
+       width: 100%;
+       max-width: 400px;
+}
+
+.search {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin: 0;
+}
+
+button {
+       margin: 0.5em;
+       border-radius: 50%;
+       border: none;
+       outline: none;
+       background: #7c7c7c8b;;
+       cursor: pointer;
+       font-size: 35px;
+}
+
+input.search-bar {
+       border: none;
+       border-radius: 25px;
+       outline: none;
+       margin: 0;
+       padding: 0.6em 1em;
+       background: #7c7c7c2b;
+       color: white;
+       font-size: 120%;
+       font-family: 'Raleway', sans-serif;
+       width: calc(100% - 100px);
+}
+
+button:hover {
+  background: #7c7c7c6b;
+}
+
+h1.temperature {
+  margin: 0;
+  margin-bottom: 0.4em;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.description {
+  text-transform: capitalize;
+  margin-left: 8px;
+}
+
+.weather.loading {
+  visibility: hidden;
+  max-height: 20px;
+  position: relative;
+}
+
+.weather.loading:after {
+  visibility: visible;
+  content: "Loading...";
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 20px;
+}
