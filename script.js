@@ -12,7 +12,7 @@ const apiKey =  "58782a0db956cc6008e9fce3c0fce3a4"
 
 
 function getWeather(city) {
-      fetch("http://api.openweathermap.org/data/2.5/weather?q="+ city +"&units=metric&appid=" + apiKey)
+      fetch("https://api.openweathermap.org/data/2.5/weather?q="+ city +"&units=metric&appid=" + apiKey)
       .then((response) => {
           if (!response.ok) {
           alert("Sorry, No weather is found");
