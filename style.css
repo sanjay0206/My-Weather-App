@@ -11,7 +11,9 @@ body {
        background-image: url('https://source.unsplash.com/1600x900/?landscape');
        color: white;
 }
-
+.logo {
+  border-radius: 50px;
+}
 .content {
        background: black;
        padding: 2em;
@@ -34,7 +36,8 @@ button {
        outline: none;
        background: #7c7c7c8b;;
        cursor: pointer;
-       font-size: 35px;
+       font-size: 25px;
+       padding: 0.4em 0.5em;
 }
 
 input.search-bar {
