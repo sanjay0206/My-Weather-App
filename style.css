@@ -36,8 +36,8 @@ button {
        outline: none;
        background: #7c7c7c8b;;
        cursor: pointer;
-       font-size: 25px;
-       padding: 0.4em 0.5em;
+       font-size: 27px;
+       padding: 0.3em 0.4em;
 }
 
 input.search-bar {
