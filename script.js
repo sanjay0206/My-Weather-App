@@ -10,18 +10,37 @@ const searchInputText = document.getElementById("search-input")
 const weather = {}
 const apiKey =  "58782a0db956cc6008e9fce3c0fce3a4"
 
+if('geolocation' in navigator) {
+  navigator.geolocation.getCurrentPosition(findUserLocation)
+}
 
-function getWeather(city) {
-      fetch("https://api.openweathermap.org/data/2.5/weather?q="+ city +"&units=metric&appid=" + apiKey)
-      .then((response) => {
-          if (!response.ok) {
-          alert("Sorry, No weather is found");
-        }
-        return response.json()
+function findUserLocation(position){
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  getWeatherByLocation(latitude, longitude);  
+}
+
+function getWeatherByLocation(latitude, longitude){
+  let userLocationApi = "http://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&units=metric&appid="+apiKey;
+  fetch(userLocationApi)
+      .then((response) => { 
+          return response.json();
       })
       .then((data) => displayWeather(data));
 }
 
+
+function getWeather(city) {
+  let byCityApi = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&units=metric&appid="+apiKey;
+  fetch(byCityApi)
+      .then((response) => {
+          if (response.ok) {
+            return response.json();
+        }
+        alert("Sorry, no weather is found");
+      })
+      .then((data) => displayWeather(data));
+}
 
 function displayWeather(data) {
         weather.name = data.name; 
@@ -30,7 +49,6 @@ function displayWeather(data) {
         weather.temp = data.main.temp;
         weather.humidity  = data.main.humidity;
         weather.speed = data.wind.speed;
-
         console.log(weather.name, weather.icon, weather.description, weather.temp, weather.humidity, weather.speed)
 
         cityElement.innerText = "Weather in "+weather.name;
@@ -42,25 +60,21 @@ function displayWeather(data) {
         weatherElement.classList.remove("loading");
         document.body.style.backgroundImage =
         "url('https://source.unsplash.com/1600x900/?" + weather.name + "')";
-    }
+}
 
-    function searchCity() {
-        const cityName = searchInputText.value.trim()
-        getWeather(cityName)
-    }
+function searchCity() {
+    const cityName = searchInputText.value.trim()
+    getWeather(cityName)
+}
     
-
 const searchOnClick = document.querySelector(".search button")
 const searchOnEnter = document.querySelector(".search-bar")
 
-searchOnClick.addEventListener("click", function() {
-  searchCity();
-});
-    
-searchOnEnter.addEventListener("keyup", function(event) {
-    if (event.key == "Enter") {
-      searchCity();
-    }
+searchOnClick.addEventListener("click", (event) => searchCity());
+
+searchOnEnter.addEventListener("keyup", (event) => {
+  if (event.key == "Enter")  
+    searchCity()
 });
     
 //getWeather("Coimbatore");
