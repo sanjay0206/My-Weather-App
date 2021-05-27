@@ -11,9 +11,7 @@ body {
        background-image: url('https://source.unsplash.com/1600x900/?landscape');
        color: white;
 }
-.logo {
-  border-radius: 50px;
-}
+
 .content {
        background: black;
        padding: 2em;
